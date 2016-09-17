@@ -25,14 +25,32 @@ if test == '1' :
 elif test == '2' :
     #tar = ['0', '%00']
     temp = '%{0}'
-    tar = []
+    tar = [""]
     for i in range(0, 100):
         tar.append(temp.format(str(i).zfill(2)))
 
-    
+# input increasingly longer length of %00
+elif test == '3' :
+    temp = '%{0}'
+    tar = []
+    for i in range(28, 54):
+        tar.append(temp.format("62") * i)
+
+# custom input
+elif test == '4' :
+    tar = ['bbbbbbbbbbbbb', 'bbbbbbbbbbbcb']
 
 
+# notes
+# 42 bytes IV?
+# 22 bytes blocks
+# 44 bytes padding   
+# going beyond target length [0, 6], 22 bytes are added to IV
+# another 1st block length increase after [7, 14]
 
+# going beyond target length [0, 8], 20 bytes are added in total length
+# seems like every 8 length, total length increases. this time by 24 bytes
+# seems to alternate between 20 and 24 bytes addition
 header = {'Content-Type': 'application/x-www-form-urlencoded'}
 
 
@@ -49,6 +67,6 @@ for i in range(0, len(tar)):
 #print rehist.status_code, rehist.url
     query = str.split(response.url.encode('ascii','ignore'), '=')
     #print(query)
-    print(tar[i]),
+    #print(tar[i].ljust(3)),
     print(urllib.unquote(query[1])),
-    print(urllib.unquote(tar[i]))
+    print(urllib.unquote(tar[i]).ljust(2))
