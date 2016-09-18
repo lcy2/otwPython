@@ -2,6 +2,7 @@ import requests
 import string
 import urllib
 import sys
+import base64
 
 
 [name, test] = sys.argv
@@ -33,7 +34,7 @@ elif test == '2' :
 elif test == '3' :
     temp = '%{0}'
     tar = []
-    for i in range(28, 54):
+    for i in range(0, 20):
         tar.append(temp.format("62") * i)
 
 # custom input
@@ -68,5 +69,8 @@ for i in range(0, len(tar)):
     query = str.split(response.url.encode('ascii','ignore'), '=')
     #print(query)
     #print(tar[i].ljust(3)),
+    #print(base64.b64decode(urllib.unquote(query[1]))), 
+    #print(len((base64.b64decode(urllib.unquote(query[1])))))
+
     print(urllib.unquote(query[1])),
     print(urllib.unquote(tar[i]).ljust(2))
