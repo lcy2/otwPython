@@ -54,10 +54,10 @@ elif test == '4' :
 # seems to alternate between 20 and 24 bytes addition
 header = {'Content-Type': 'application/x-www-form-urlencoded'}
 
-
+laststr = ''
 for i in range(0, len(tar)):
 
-
+    
     #payload = {'query':'tar[i]'}
     payload = 'query=%s' % tar[i]
     #print payload
@@ -69,8 +69,20 @@ for i in range(0, len(tar)):
     query = str.split(response.url.encode('ascii','ignore'), '=')
     #print(query)
     #print(tar[i].ljust(3)),
-    #print(base64.b64decode(urllib.unquote(query[1]))), 
+    currstr = base64.b64decode(urllib.unquote(query[1]))
+    #print(currstr)
     #print(len((base64.b64decode(urllib.unquote(query[1])))))
-
-    print(urllib.unquote(query[1])),
-    print(urllib.unquote(tar[i]).ljust(2))
+    
+    # compare the strings
+    for index, bitchar in enumerate(laststr):
+         if bitchar == currstr[index]:
+             sys.stdout.write('_')
+         else:
+             sys.stdout.write('*')
+    sys.stdout.flush()
+    print " ",
+    laststr = base64.b64decode(urllib.unquote(query[1]))
+    
+ 
+    #print(urllib.unquote(query[1])),
+    print(urllib.unquote(tar[i]).rjust(2))

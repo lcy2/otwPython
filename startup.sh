@@ -8,6 +8,7 @@ then
     echo ".vimrc file already exists."
 else
     echo "syntax on" >> $HOME/.vimrc
+    echo "set expandtab shiftwidth=4 softtabstop=0 autoindent tabstop=4" >> $HOME/.vimrc
     echo ".vimrc file created."
 fi
 
