@@ -15,7 +15,7 @@ target2 = 'http://natas28.natas.labs.overthewire.org/search.php'
 
 user_auth = ('natas28', 'JWwR438wkgTsNKBbcJoowyysdM82YjeF')
 #tar = string.ascii_letters + string.digits
-tar = ['bbbbbbbbbbbb']
+tar = ['bbbbbbbbbbbbbb']
 
 # notes
 # 32 + 16 + 32 bytes   
@@ -51,16 +51,18 @@ for i in range(0, len(tar)):
     
     
 
-    testbyte = 255
     for index, eachbyte in enumerate(bytesarray):
-        
-        rejoinarray = bytesarray[:]
-        rejoinarray[index] = eachbyte ^ testbyte
-        
-        print "Editing: " + "_" * index + "*" + "_" * (len(bytesarray)-index-1)
-        
+        if index == 0:
+            rejoinarray = bytesarray[:]
+        else:
+            rejoinarray = bytesarray[:-1*index]
+        print "Editing: " + "_" * len(rejoinarray)
         # put together the query string
         rejoinarray = [chr(x) for x in rejoinarray]
+        
+        # alter last byte
+        #rejoinarray[-1] = chr(ord(rejoinarray[-1]) ^ 255)
+
         rejoined = urllib.quote_plus(base64.b64encode("".join(rejoinarray)))
 
 

@@ -34,12 +34,13 @@ elif test == '2' :
 elif test == '3' :
     temp = '%{0}'
     tar = []
-    for i in range(0, 20):
-        tar.append(temp.format("62") * i)
+    for i in range(0, 40):
+        tar.append(temp.format("65") * i)
 
 # custom input
 elif test == '4' :
     tar = ['bbbbbbbbbbbbb', 'bbbbbbbbbbbcb']
+
 
 
 # notes
