@@ -56,14 +56,15 @@ for i in range(1, 33):
     # experimental block is from [80:112]
     # plaintext block is from [48:80]
     
-    for j in range(31,127):
+    for j in range(31,256):
         print "-" * 60
 
-        if chr(j) == "&":
-            continue
+        # expand the secretkey to be url encoded
+        secarray = ["%" + format(ord(x),'x') for x in secretkey[::-1]]
+
 
         # this is the known query / guessing query
-        tar2 = pad + chr(j) + secretkey[::-1] + "%{0}".format(format(16-i, "x").zfill(2)) * (16 - i) + ptx * 3
+        tar2 = pad + "%" + format(j,'x').zfill(2) + "".join(secarray) + "%{0}".format(format(16-i, "x").zfill(2)) * (16 - i) + ptx * 3
         print tar2, len(tar2), (len(tar2) + 32 + 19 + 16)
         # this is the unknown one
         tar3 = pad + ptx * (16 + 3 + i)
