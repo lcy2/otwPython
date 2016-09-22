@@ -35,10 +35,12 @@ header = {'Content-Type': 'application/x-www-form-urlencoded'}
 
 
 
-secretkey = ';3'
-secretkey = ''
+secretkey = ';302%L'
+#secretkey = ''
 
-for i in range(1, 33):
+twocharrec = ''
+
+for i in range(7, 33):
     #tar = pad + ptx * (64 - i) + secretkey
     #payload = 'query=%s' % tar
     #response = requests.post(target, auth = user_auth, headers = header, data = payload, allow_redirects = True)
@@ -56,15 +58,18 @@ for i in range(1, 33):
     # experimental block is from [80:112]
     # plaintext block is from [48:80]
     
-    for j in range(31,256):
+    for j in range(0,256):
         print "-" * 60
 
         # expand the secretkey to be url encoded
         secarray = ["%" + format(ord(x),'x') for x in secretkey[::-1]]
-
-
+        
         # this is the known query / guessing query
-        tar2 = pad + "%" + format(j,'x').zfill(2) + "".join(secarray) + "%{0}".format(format(16-i, "x").zfill(2)) * (16 - i) + ptx * 3
+        tar2 = pad + "%" + format(j,'x').zfill(2) + "".join(secarray) + "%{0}".format(format(16-i, "x").zfill(2)) * (16 - i) + ptx * 2 # if something gets magic quoted, i'll know
+
+        #tar2 = pad + chr(j) + secretkey[::-1] + "%0d" * (16 - i) + ptx * 1
+        #print "%{0}".format(format(16-i, "x").zfill(2)) * (16 - i)
+        #print "%0d" * (16 - i)
         print tar2, len(tar2), (len(tar2) + 32 + 19 + 16)
         # this is the unknown one
         tar3 = pad + ptx * (16 + 3 + i)
@@ -96,6 +101,9 @@ for i in range(1, 33):
 
 
         print len(bytesarray2), len(bytesarray3)
+
+        if len(bytesarray2) > 100:
+            twocharrec += format(j,'x').zfill(2) + " "
         tmptxt = ''
         tmptxt2 = ''
         for index, eachchar in enumerate(bytesarray2):
@@ -136,4 +144,5 @@ for i in range(1, 33):
             break
         if j == 255:
             print "No match :("
+            print twocharrec
             sys.exit()

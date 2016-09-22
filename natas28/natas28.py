@@ -39,8 +39,8 @@ elif test == '3' :
 
 # custom input
 elif test == '4' :
-    tar = ['eeeeeeeeeeC'+'e'*189, 'e'*200]
-
+    #tar = ["padpadpadp" + "b" * 15, "padpadpadp" + "b" * 16, "padpadpadp" + "b" * 3 + "%0d" * 6]
+    tar = ["padpadpadp", " OR 1 = 1#", "padpadpadpadpSELECT text FROM"]
 
 def decodeNatas ( encodedStr ) :
     R = ['97', '3f', 'd7', '04', 'd2', 'b4', 'a1', 'af', '7a', '52', '98', '38', 'fd', '51', '8c', 'f9']
@@ -78,6 +78,7 @@ for i in range(0, len(tar)):
     #for rehist in response.history:
 #print rehist.status_code, rehist.url
     query = str.split(response.url.encode('ascii','ignore'), '=')
+    print response.url
     #print(query)
     #print(tar[i].ljust(3)),
     currstr = base64.b64decode(urllib.unquote(query[1]))
@@ -108,8 +109,8 @@ for i in range(0, len(tar)):
     # print out the blocks for comparison
     if 1 == 1:
         for block in range(0, len(currstr),16):
-            print currstr[block:block+15]
-            if block == 64:
+            print "".join([format(ord(x), 'x').zfill(2) for x in currstr[block:block+16]])
+            if block == 64 and 1 == 0:
                 crackR = [chr(ord(x) ^ ord("e")) for x in currstr[block:block+16]]
                 print "\n" + "Decrypt" + "\n" + "-" * 60
                 if len(currstr) > 100 :
