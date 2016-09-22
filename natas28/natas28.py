@@ -39,8 +39,8 @@ elif test == '3' :
 
 # custom input
 elif test == '4' :
-    #tar = ["padpadpadp" + "b" * 15, "padpadpadp" + "b" * 16, "padpadpadp" + "b" * 3 + "%0d" * 6]
-    tar = ["padpadpadp", " OR 1 = 1#", "padpadpadpadpSELECT text FROM"]
+    #tar = ["padpadpa" + "b" * 15, "padpadpadp" + "b" * 16, "padpadpadp" + "b" * 3 + "%0d" * 6]
+    tar = ["padpadpadp", "padpadpadp OR 1 = 1 OR 2=2", "padpadp", "padpadpadpabcd"]
 
 def decodeNatas ( encodedStr ) :
     R = ['97', '3f', 'd7', '04', 'd2', 'b4', 'a1', 'af', '7a', '52', '98', '38', 'fd', '51', '8c', 'f9']

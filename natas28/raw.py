@@ -15,17 +15,27 @@ target2 = 'http://natas28.natas.labs.overthewire.org/search.php'
 user_auth = ('natas28', 'JWwR438wkgTsNKBbcJoowyysdM82YjeF')
 
 
-tar = ['''1be82511a7ba5bfd578c0eef466db59c
+tar = ['''
+1be82511a7ba5bfd578c0eef466db59c
 dc84728fdcf89d93751d10a7c75c8cf2
-2a527746fe0a5e856c78de40bbf2db07
-157d57c994176a05342f0c0b36a3d697
-738a5ffb4a4500246775175ae596bbd6
-f34df339c69edce11f6650bbced62702''']
+f98d3394bd37ee877f0c4d86f715196d
+6d5aa124b882457e9a09d0920a85db33
+7b7baca655f298a321e90e3f7a60d4d8
+''']
 
 
+#IKE '%padpadpa%'| OR 1 = 3 + 2 -4|;
 
 
-#56dc04ae7951bfc0a9d715bc5abc6a95
+#6d5aa124b882457e9a09d0920a85db33   " OR 1 = 1 OR 2=2"
+#f98d3394bd37ee877f0c4d86f715196d   "IKE '%padpadp%' "
+#739c0e02884d8c5dc1da136f9e554542   "IKE '%padpadpa%'"
+#ea6e17a31472ca9f6be0f7e0e0261b08   " OR 1 = 3 + 2 -4"
+#d8ae51d7da71b2b083d919a0d7b88b98   16 * 0x16
+#b734aa0c92ed6cfb8abb2375a4ea8114   "IKE '% OR 1 = 1' 
+#7b7baca655f298a321e90e3f7a60d4d8   ";" + 15 * 0x15
+
+
 for i in range(0, len(tar)):
     tar[i] = tar[i].replace("\n", "").strip()
 
